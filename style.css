@@ -1,0 +1,248 @@
+/* Reset y base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Paleta */
+  --azul-oscuro: #0b1d3a;   /* azul marino profundo */
+  --azul: #1e3c72;          /* azul primario */
+  --azul-sec: #2a5298;      /* azul secundario */
+  --negro: #0a0a0a;         /* negro suave */
+  --gris-900: #121212;
+  --gris-700: #2b2b2b;
+  --gris-500: #5a5a5a;
+  --gris-300: #bdbdbd;
+  --gris-200: #d9d9d9;
+  --blanco: #ffffff;
+
+  /* Efectos */
+  --borde: rgba(255,255,255,0.08);
+  --sombra: 0 20px 60px rgba(0, 0, 0, 0.5);
+  --blur: blur(10px);
+}
+
+/* Fondo con gradiente profundo y textura sutil */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+  background:
+    radial-gradient(1200px 600px at 80% 10%, rgba(42, 82, 152, 0.15) 0%, transparent 60%),
+    radial-gradient(800px 400px at 20% 90%, rgba(30, 60, 114, 0.12) 0%, transparent 70%),
+    linear-gradient(135deg, var(--azul-oscuro) 0%, var(--negro) 100%);
+  color: var(--blanco);
+}
+
+/* Card principal con “glass” oscuro */
+.container {
+  width: 100%;
+  max-width: 720px;
+  padding: 40px;
+  border-radius: 16px;
+  background: rgba(18, 18, 18, 0.7);
+  backdrop-filter: var(--blur);
+  border: 1px solid var(--borde);
+  box-shadow: var(--sombra);
+  animation: fadeInUp 600ms ease 60ms both;
+}
+
+/* Títulos */
+h1 {
+  color: var(--blanco);
+  text-align: center;
+  margin-bottom: 28px;
+  font-size: 34px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  position: relative;
+}
+
+h1::after {
+  content: "";
+  display: block;
+  height: 3px;
+  width: 64px;
+  margin: 10px auto 0;
+  background: linear-gradient(90deg, var(--azul), var(--azul-sec));
+  border-radius: 3px;
+}
+
+h3 {
+  color: #dfe7ff;
+  margin-bottom: 12px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* Secciones y tipografía secundaria */
+.section {
+  margin-bottom: 22px;
+  animation: fadeIn 500ms ease both;
+}
+
+label {
+  display: block;
+  color: #e8eaef;
+  margin-bottom: 8px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+/* Área de texto */
+textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--borde);
+  border-radius: 10px;
+  font-size: 16px;
+  resize: vertical;
+  min-height: 96px;
+  font-family: inherit;
+  color: var(--blanco);
+  background: rgba(27, 27, 27, 0.65);
+  transition: border-color 220ms ease, box-shadow 220ms ease, transform 120ms ease;
+}
+
+textarea::placeholder {
+  color: #9aa3b2;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: rgba(42, 82, 152, 0.8);
+  box-shadow: 0 0 0 4px rgba(42, 82, 152, 0.25);
+  transform: translateY(-1px);
+}
+
+.char-count {
+  text-align: right;
+  color: #a8b1c0;
+  font-size: 12px;
+  margin-top: 6px;
+}
+
+/* Display de matriz */
+.matriz-display,
+.resultado-box {
+  background: rgba(27, 27, 27, 0.55);
+  padding: 18px 16px;
+  border-radius: 10px;
+  border: 1px solid var(--borde);
+  min-height: 64px;
+  font-family: 'Courier New', monospace;
+  color: #e8eaef;
+  line-height: 1.8;
+  transition: transform 160ms ease, box-shadow 220ms ease;
+}
+
+.matriz-display:hover,
+.resultado-box:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+/* Inputs de matriz 2x2 */
+.matriz-input {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  max-width: 240px;
+}
+
+.matriz-input input {
+  padding: 12px;
+  border: 1px solid var(--borde);
+  border-radius: 10px;
+  font-size: 18px;
+  text-align: center;
+  color: var(--blanco);
+  background: rgba(27, 27, 27, 0.65);
+  transition: border-color 220ms ease, box-shadow 220ms ease, transform 120ms ease;
+}
+
+.matriz-input input:focus {
+  outline: none;
+  border-color: rgba(42, 82, 152, 0.8);
+  box-shadow: 0 0 0 4px rgba(42, 82, 152, 0.25);
+  transform: translateY(-1px);
+}
+
+/* Botones con animación y ripple */
+button {
+  width: 100%;
+  padding: 14px 16px;
+  background: linear-gradient(135deg, var(--azul) 0%, var(--azul-sec) 100%);
+  color: var(--blanco);
+  border: none;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 100ms ease, filter 180ms ease, box-shadow 220ms ease;
+  margin: 18px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+button:hover {
+  filter: brightness(1.06);
+  box-shadow: 0 12px 32px rgba(30, 60, 114, 0.35);
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+/* Efecto ripple */
+button::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(255,255,255,0.25), transparent 40%);
+  opacity: 0;
+  transition: opacity 320ms ease;
+}
+
+button:active::after {
+  opacity: 1;
+}
+
+/* Estado de error */
+.error {
+  color: #ffb3b3;
+  background: rgba(179, 38, 30, 0.14);
+  border-color: rgba(179, 38, 30, 0.6) !important;
+}
+
+/* Animaciones clave */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0 }
+  to { opacity: 1 }
+}
+
+/* Responsive fino */
+@media (max-width: 560px) {
+  .container { padding: 24px }
+  h1 { font-size: 28px }
+  .matriz-input { max-width: 100% }
+}
